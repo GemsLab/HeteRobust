@@ -1,0 +1,3 @@
+python -m HeteroRobust.run resume_from_job MetattackSession {perturbJobID} --use_runner -
+    test_poison {perturb_prefix} {model} {model_arg} - 
+    exit

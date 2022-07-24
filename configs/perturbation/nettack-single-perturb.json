@@ -1,0 +1,27 @@
+{
+    "AttackSession": "NettackSession",
+    "SessionConfig": [
+        ""
+    ],
+    "datasetName": [
+        "cora", "citeseer", "fb100", "snap-patents-downsampled"
+    ],
+    "randomSeed": [
+        3635683305, 442986796, 1709222957
+    ],
+    "TemplateVars": {
+        "node_selector": ["random_selector"],
+        "node_selector_args": ["--random_num 60"],
+        "perturb_args": ["--attack_features False --attack_budget 1"],
+        "tag": ["nettack-adj-only-rnd60-single"],
+        "model_fit_arg": ["--train_iters 1000 --patience 100"]
+    },
+    "model": {
+       "GCN": [
+           "perturb: --dropout 0 --with_relu False --nhid 64"
+       ]
+    },
+    "Vars": {
+    },
+    "Sorts": []
+}

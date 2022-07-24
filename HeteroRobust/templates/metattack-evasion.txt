@@ -1,0 +1,4 @@
+python -m HeteroRobust.run resume_from_job MetattackSession {perturbJobID} --use_runner - 
+    add_model {model} {model_arg} --name {model}_p - fit_model {model}_p -
+    test_evasion {perturb_prefix} {model}_p - 
+    exit

@@ -1,0 +1,8 @@
+python -m HeteroRobust.run SparseSmoothingSession 
+    --random_seed {randomSeed} --datasetName {datasetName} {SessionConfig} -
+    set_configs --use_runner True -
+    add_model {model} {model_arg} --name {model}_p - fit_model {model}_p -
+    predict_smooth_gnn {model}_p --target prevotes --n_samples {prevote_nsample} -
+    predict_smooth_gnn {model}_p --n_samples {vote_nsample} -
+    certificate_grid -
+    exit

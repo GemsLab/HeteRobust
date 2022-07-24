@@ -1,0 +1,8 @@
+python -m HeteroRobust.run MetattackSession
+    --random_seed {randomSeed} --datasetName {datasetName} {SessionConfig} -
+    set_configs --use_runner True -
+    add_model {model} {model_arg} -
+    fit_models m0 {model_fit_arg} -
+    run_perturb m0 {perturb_args} -
+    save_perturb --tag {tag} -
+    exit

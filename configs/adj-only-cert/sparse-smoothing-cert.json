@@ -1,0 +1,56 @@
+{
+    "AttackSession": "SparseSmoothingSession",
+    "SessionConfig": [
+        "--pf_plus_adj 0.001 --pf_minus_adj 0.4 --pf_plus_att 0.0 --pf_minus_att 0.0 --conf_alpha 0.01",
+        "--pf_plus_adj 0.0 --pf_minus_adj 0.4 --pf_plus_att 0.0 --pf_minus_att 0.0 --conf_alpha 0.01",
+        "--pf_plus_adj 0.001 --pf_minus_adj 0.0 --pf_plus_att 0.0 --pf_minus_att 0.0 --conf_alpha 0.01"
+    ],
+    "TemplateVars": {
+        "prevote_nsample": [1000],
+        "vote_nsample": [100000]
+    },
+    "datasetName": [
+        "cora", "citeseer", "fb100", "snap-patents-downsampled"
+    ],
+    "randomSeed": [
+        3635683305, 442986796, 1709222957
+    ],
+    "model": {
+        "H2GCN": [
+            "clean-only: --adj_nhood ['0,1'] --network_setup M64-G-V-R-D0.5-MO-G-V #GCN",
+            "clean-only: #H2GCN",
+            "clean-only: --adj_nhood ['1'] --network_setup I-T1-G-V-C1-M64-R-T2-G-V-C2-MO-R --adj_norm_type rw #GraphSAGE"
+        ],
+        "CPGNN": [
+            "clean-only: --network_setup M64-R-MO-E-BP2 #CPGNN"
+        ],
+        "ProGNN": [
+        ],
+        "GCNSVD": [
+        ],
+        "GNNGuard": [
+        ],
+        "GAT": [
+            "clean-only:"
+        ],
+        "GPRGNN": [
+            "clean-only: --nhid 64 --alpha {gprgnn_alpha}"
+        ],
+        "FAGCN": [
+            "clean-only: --nhid 64 --eps {fagcn_eps} --dropout 0.5"
+        ],
+        "APPNP": [
+            "clean-only: --alpha {appnp_alpha}"
+        ]
+    },
+    "Vars": {
+        "gcnsvd_k": [5, 10, 15, 50],
+        "gcnsvd_k_h2gcn": [5, 50],
+        "gprgnn_alpha": [0.9],
+        "fagcn_eps": [0.1, 0.2, 0.5, 0.9],
+        "appnp_alpha": [0.9]
+    },
+    "Comments": {
+    },
+    "Sorts": []
+}

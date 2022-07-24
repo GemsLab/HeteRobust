@@ -1,0 +1,57 @@
+{
+    "AttackSession": "MetattackSession",
+    "PerturbJobFilters": {
+        "sp": {"type": "perturbation"},
+        "doc": {"comment": "metattack-{ptb_ratio}-{DATASET}-adj-only"}
+    },
+    "model": {
+        "H2GCN": [
+            "poison+evasion: --network_setup M64-R-D0.5-MO #MLP",
+            "poison+evasion: --adj_nhood ['0,1'] --network_setup M64-G-V-R-D0.5-MO-G-V #GCN",
+            "poison+evasion: --adj_nhood ['0,1'] --network_setup M64-GS-V-R-D0.5-MO-GS-V --adj_norm_type gdc #GCN + soft_medoid + GDC",
+
+            "poison+evasion: #H2GCN",
+            "poison+evasion: --adj_svd_rank {gcnsvd_k_h2gcn} #H2GCN-SVD",
+            "poison+evasion: --network_setup M64-R-T1-GS-V-T2-GS-V-C1-C2-D0.5-MO --adj_norm_type gdc #H2GCN + soft_medoid + GDC", 
+            
+            "poison+evasion: --adj_nhood ['1'] --network_setup I-T1-G-V-C1-M64-R-T2-G-V-C2-MO-R --adj_norm_type rw #GraphSAGE",
+            "poison+evasion: --adj_nhood ['1'] --network_setup I-T1-G-V-C1-M64-R-T2-G-V-C2-MO-R --adj_norm_type rw --adj_svd_rank {gcnsvd_k_h2gcn} #GraphSAGE-SVD",
+            "poison+evasion: --adj_nhood ['1'] --network_setup I-T1-GS-V-C1-M64-R-T2-GS-V-C2-MO-R --adj_norm_type gdc #GraphSAGE + soft_medoid + GDC"
+        ],
+        "CPGNN": [
+            "poison+evasion: --network_setup M64-R-MO-E-BP2 #CPGNN-MLP"
+        ],
+        "ProGNN": [
+            "poison: --nhid 64"
+        ],
+        "GCNSVD": [
+            "poison+evasion: --nhid 64 --svd_solver eye-svd --k {gcnsvd_k}"
+        ],
+        "GNNGuard": [
+            "poison: --nhid 64 --base_model GCN_fixed"
+        ],
+        "GAT": [
+            "poison+evasion:"
+        ],
+        "GPRGNN": [
+            "poison+evasion: --nhid 64 --alpha {gprgnn_alpha}"
+        ],
+        "FAGCN": [
+            "poison+evasion: --nhid 64 --eps {fagcn_eps} --dropout 0.5"
+        ],
+        "APPNP": [
+            "poison+evasion: --alpha {appnp_alpha}"
+        ]
+    },
+    "Vars": {
+        "ptb_ratio": ["0.20"],
+        "DATASET": ["cora", "citeseer", "fb100", "snap-patents-downsampled"],
+        "perturb_prefix": "p_m0",
+        "gcnsvd_k": [5, 10, 15, 50],
+        "gcnsvd_k_h2gcn": [5, 50],
+        "gprgnn_alpha": [0.1, 0.2, 0.5, 0.9],
+        "fagcn_eps": [0.1, 0.2, 0.5, 0.9],
+        "appnp_alpha": [0.1, 0.2, 0.9]
+    },
+    "Sorts": []
+}

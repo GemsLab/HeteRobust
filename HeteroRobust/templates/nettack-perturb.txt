@@ -1,0 +1,9 @@
+python -m HeteroRobust.run NettackSession
+    --random_seed {randomSeed} --datasetName {datasetName} {SessionConfig} -
+    set_configs --use_runner True -
+    add_model {model} {model_arg} -
+    fit_models m0 {model_fit_arg} -
+    select_nodes {node_selector} m0 {node_selector_args} -
+    run_perturb m0 {perturb_args} -
+    save_perturb --tag {tag} -
+    exit
