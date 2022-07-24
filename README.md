@@ -1,7 +1,7 @@
 # How does Heterophily Impact the Robustness of Graph Neural Networks? Theoretical Connections and Practical Implications
 
 
-Jiong Zhu, Junchen Jin, Donald Loveland, Michael T. Schaub, and Danai Koutra. 2022. *How does Heterophily Impact Robustness of Graph Neural Networks? Theoretical Connections and Practical Implications*. In Proceedings of the 28th ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD ’22), August 14–18, 2022, Washington, DC, USA. ACM, New York, NY, USA, 20 pages. https://doi.org/10.1145/3534678.3539418
+Jiong Zhu, Junchen Jin, Donald Loveland, Michael T. Schaub, and Danai Koutra. 2022. *How does Heterophily Impact the Robustness of Graph Neural Networks? Theoretical Connections and Practical Implications*. In Proceedings of the 28th ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD ’22), August 14–18, 2022, Washington, DC, USA. ACM, New York, NY, USA, 20 pages. https://doi.org/10.1145/3534678.3539418
 
 [[Paper + Full Appendix]](https://arxiv.org/pdf/2106.07767.pdf)
 
